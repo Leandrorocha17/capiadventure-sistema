@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Página de recuperação e alteração de senha para acesso ao CAPIADVENTURE."/>
+  <title>CAPIADVENTURE - Alterar Senha</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+        /* APLICAÇÃO GLOBAL DA FONTE ROBOTO FLEX */
+        body {
+            font-family: 'Roboto Flex', sans-serif;
+        }
+
+        /* Configuração da Logo com Sombra Preta */
+        .brand .logo {
+            width: 80px; 
+            height: 80px; 
+            background-color: transparent;
+            border-radius: 50%; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .brand .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+        
+        /* ESTILO PARA CENTRALIZAR E EMPILHAR O LINK */
+        .links-secundarios {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            margin-top: 5px; 
+            gap: 10px; 
+        }
+        
+        /* ESTILO DO BOTÃO DE LINK PEQUENO */
+        .link-pequeno {
+            display: inline-block;
+            padding: 8px 15px; 
+            border-radius: 5px;
+            text-decoration: none; 
+            font-size: 0.9em; 
+            font-weight: 500; 
+            
+            /* CORES */
+            background-color: rgba(0, 0, 0, 0.04); 
+            color: rgba(0, 0, 0, 0.7); 
+            border: none;
+        }
+
+        /* Efeito visual ao passar o mouse */
+        .link-pequeno:hover {
+            background-color: rgba(0, 0, 0, 0.1); 
+            text-decoration: none; 
+        }
+        
+        /* ❗ ATUALIZADO: Remove movimento e transição de TODOS os links superiores (top-link) */
+        .top-link:hover {
+            text-decoration: none;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        /* Ajusta o tamanho da fonte e adiciona negrito ao botão */
+        .login-box .btn {
+            font-size: 1.15em; 
+            font-weight: bold; 
+        }
+        
+        /* NOVO: Remove movimento e transição de TODOS os elementos com a classe .btn ao passar o mouse */
+        .login-box .btn:hover {
+            transform: none !important;
+            transition: none !important;
+        }
+
+        /* Estilo para o título */
+        .login-box h2 {
+            color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
+        }
+        
+        /* Mensagem da tela */
+        .login-message {
+            text-align: center;
+            margin-bottom: 30px; 
+            font-size: 1.1em;
+            color: rgba(0, 0, 0, 0.5); 
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+        
+        /* ATUALIZADO: Rodapé com PRETO SÓLIDO (100%) e POSICIONAMENTO ABSOLUTO */
+        .footer {
+            background-color: black !important; /* Cor PRETA SÓLIDA (Forçado 100%) */
+            color: white; /* Cor do texto no rodapé */
+            text-align: center; /* Centraliza o texto */
+            padding: 15px 0;
+            width: 100%;
+            /* CORREÇÃO: Adiciona posicionamento absoluto para garantir que o rodapé apareça no final da tela em conteúdo curto. */
+            position: absolute; 
+            bottom: 0;
+            left: 0;
+        }
+        /* FIM DO ESTILO DO RODAPÉ */
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">
+        <img src="Capivara.png" alt="Logotipo CAPIADVENTURE - Capivara mascote">
+      </div>
+      <div class="title">CAPIADVENTURE</div>
+    </div>
+
+    <nav class="nav-links" aria-label="Navegação">
+        <ul>
+            <li><a href="trilhas.php" class="top-link">Trilhas</a></li> 
+            <li><a href="login.html" class="top-link">Entrar</a></li> 
+            <li><a href="cadastro.html" class="top-link">Cadastrar</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    
+    <p class="login-message">
+        Recupere o acesso à sua conta.
+    </p>
+    
+    <section class="screen" id="tela_alterar_senha" aria-labelledby="alterar-senha-heading">
+      <div class="login-box">
+        <a href="login.html" class="close-btn" aria-label="Fechar e voltar para a tela de login">×</a>
+        
+        <h2 id="alterar-senha-heading">Alterar senha</h2> 
+
+        <div id="mensagem-alerta" class="mensagem" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 4px;"></div>
+        
+        <form action="processa_recuperacao.php" method="POST" autocomplete="off">
+          <p style="text-align: center; margin-bottom: 20px; color: rgba(0,0,0,0.6);">
+              Informe seu email para receber o link de alteração de senha.
+          </p>
+          
+          <label for="email-recuperacao" class="sr-only">Email:</label>
+          <input id="email-recuperacao" type="email" placeholder="Digite seu email de cadastro" name="email" autocomplete="email" required>
+          
+          <button type="submit" class="btn">Enviar link de recuperação</button>
+
+          <div class="links-secundarios" style="margin-top: 20px;">
+            <a href="login.html" class="link-pequeno">Lembrou da senha? Faça login.</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <p>2025 CAPIADVENTURE. Desenvolvido por Leandro Rocha & Gabriel Gonçalves.</p>
+  </footer>
+
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<?php
+session_start();
+
+// Verifica se o usuário está logado (se estiver, ele deve ser redirecionado para a tela logada)
+if (isset($_SESSION['logado']) && $_SESSION['logado'] === true) {
+    header("Location: index.html"); // Redireciona para o índice principal se já estiver logado
+    exit();
+}
+?>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Página de boas-vindas do CAPIADVENTURE, portal de agendamento de trilhas."/>
+    <title>CAPIADVENTURE - Bem-vindo</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Configuração da Logo com Sombra Preta (replicado para consistência) */
+        .brand .logo {
+            width: 80px; 
+            height: 80px; 
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        .brand .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+
+        /* Removendo sublinhado dos links ao passar o mouse (replicado para consistência) */
+        .top-link:hover, 
+        .btn:hover {
+            text-decoration: none;
+        }
+
+        /* 🔴 NOVO: REMOVENDO MOVIMENTO DOS LINKS SUPERIORES (Entrar/Cadastrar) */
+        .top-link:hover {
+            transform: none !important;
+            transition: none !important; /* Remove qualquer transição que cause movimento */
+        }
+        
+        /* Estilos específicos para a tela de Boas-vindas */
+        .welcome-container {
+            max-width: 600px;
+            margin: 80px auto; /* Espaçamento para o cabeçalho e rodapé */
+            padding: 20px;
+            text-align: center;
+            /* ESTILOS PARA O FUNDO BRANCO: */
+            background-color: white; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+        }
+        
+        .welcome-container h2 {
+            font-size: 2.2em;
+            color: rgba(0, 0, 0, 0.5); /* Título na cor preto com 50% de opacidade */
+            margin-bottom: 20px;
+            /* text-shadow removido para alinhar com trilhas.php */
+        }
+
+        .welcome-description {
+            font-size: 1.1em; /* AJUSTADO para 1.1em (match com trilhas.php) */
+            color: rgba(0, 0, 0, 0.7); /* AJUSTADO para Preto 70% (match com trilhas.php) */
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .welcome-actions .btn {
+            display: block; /* Ocupa a largura total do container */
+            margin: 15px auto;
+            /* AJUSTES FINAIS PARA IGUALAR O BOTÃO 'QUERO AGENDAR ESTA TRILHA' */
+            padding: 12px 25px; 
+            font-size: 1.15em; 
+            text-align: center;
+            max-width: 300px;
+            /* FIM DOS AJUSTES */
+            font-weight: bold;
+            border-radius: 8px;
+            /* Transição apenas para a cor de fundo */
+            transition: background-color 0.3s; 
+        }
+
+        /* 🟦 UNIFICANDO COR DE FUNDO PARA #34B5CC */
+        .btn-primary, .btn-secondary {
+            background-color: #34B5CC; /* Cor CIANO/TURQUESA */
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            /* Hover com cor ligeiramente mais escura */
+            background-color: #2e9eb6; 
+            /* CORREÇÃO FORÇADA: Garante que não haja movimento, anulando qualquer regra externa */
+            transform: none !important; 
+        }
+
+        /* ESTILO DO RODAPÉ (PRETO SÓLIDO 100% - CONFORME SOLICITADO) */
+        .footer {
+            background-color: black; /* Cor PRETA SÓLIDA (100%) */
+            color: white; 
+            text-align: center; 
+            padding: 15px 0;
+            width: 100%;
+            position: fixed; /* Fixa o rodapé */
+            bottom: 0;
+            left: 0;
+        }
+
+        /* INÍCIO DO ESTILO PARA A IMAGEM DE FUNDO */
+        body {
+            /* 1. Especifique o caminho da sua imagem */
+            background-image: url('foto_boas_vindas.png'); 
+            
+            /* 2. Garante que a imagem cubra toda a área do corpo */
+            background-size: cover; 
+            
+            /* 3. Centraliza a imagem no viewport */
+            background-position: center center; 
+            
+            /* 4. Fixa a imagem para que ela não role com o conteúdo */
+            background-attachment: fixed; 
+            
+            /* 5. Impede que a imagem se repita */
+            background-repeat: no-repeat; 
+        }
+        /* FIM DO ESTILO PARA A IMAGEM DE FUNDO */
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">
+                <img src="Capivara.png" alt="Logotipo CAPIADVENTURE - Capivara mascote">
+            </div>
+            <div class="title">CAPIADVENTURE</div>
+        </div>
+
+        <nav class="nav-links" aria-label="Opções de usuário">
+            <ul>
+                <li><a href="login.html" class="top-link">Entrar</a></li>
+                <li><a href="cadastro.html" class="top-link">Cadastrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="screen" id="tela_boas_vindas" aria-labelledby="welcome-heading">
+            <div class="welcome-container">
+                <h2 id="welcome-heading">Bem-vindo ao CAPIADVENTURE</h2>
+                
+                <p class="welcome-description">
+                    Seu portal para divulgação e agendamento de trilhas no Distrito Federal e regiões do entorno.
+                    <br><br>
+                    Aqui, você pode escolher o dia e horário ideais para participar de trilhas públicas ou privadas e viver experiências inesquecíveis em meio à natureza.
+                </p>
+
+                <div class="welcome-actions">
+                    <a href="login.html" class="btn btn-primary">Entrar</a>
+                    
+                    <a href="cadastro.html" class="btn btn-secondary">Cadastrar</a>
+
+                    <a href="trilhas.php" class="btn btn-secondary">Ver trilhas disponíveis</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p><?php echo date('Y'); ?> 2025 CAPIADVENTURE. Desenvolvido por Leandro Rocha & Gabriel Gonçalves.</p>
+    </footer>
+
+</body>
+</html>

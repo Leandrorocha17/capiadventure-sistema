@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Página de login para acesso ao CAPIADVENTURE."/>
+  <title>CAPIADVENTURE - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+        /* APLICAÇÃO GLOBAL DA FONTE ROBOTO FLEX */
+        body {
+            font-family: 'Roboto Flex', sans-serif;
+        }
+
+        /* Configuração da Logo com Sombra Preta */
+        .brand .logo {
+            width: 80px; 
+            height: 80px; 
+            background-color: transparent;
+            /* Propriedades para arredondar o círculo e aplicar a sombra */
+            border-radius: 50%; /* Faz o elemento ser um círculo */
+            /* Sombra preta com 70% de opacidade */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .brand .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+        
+        /* ESTILO PARA CENTRALIZAR E EMPILHAR O LINK "Não tenho cadastro" */
+        .links-secundarios {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            margin-top: 5px; /* Espaçamento ajustado para 5px */
+            gap: 10px; 
+        }
+        
+        /* ESTILO PARA O LINK: "Esqueci minha senha" */
+        .link-esqueci-senha {
+            text-align: center; 
+            margin: 5px 0 20px 0; /* Espaço antes e depois */
+            width: 100%; 
+        }
+        
+        /* ESTILO DO BOTÃO DE LINK (Esqueci Senha e Não tenho cadastro) */
+        .link-pequeno {
+            /* Transformando o link em um botão de tamanho ajustável ao texto */
+            display: inline-block;
+            padding: 8px 15px; /* Preenchimento interno para dar a aparência de botão */
+            border-radius: 5px;
+            text-decoration: none; 
+            font-size: 0.9em; 
+            font-weight: 500; 
+            
+            /* CORES SOLICITADAS: */
+            background-color: rgba(0, 0, 0, 0.04); /* Fundo Preto com 4% de opacidade (mantido) */
+            color: rgba(0, 0, 0, 0.7); /* Texto Preto com 70% de opacidade (mantido) */
+            border: none;
+        }
+
+        /* Efeito visual ao passar o mouse */
+        .link-pequeno:hover {
+            background-color: rgba(0, 0, 0, 0.1); 
+            text-decoration: none; 
+        }
+        
+        /* REMOVENDO MOVIMENTO DOS LINKS SUPERIORES (Home/Entrar) */
+        .top-link:hover {
+            text-decoration: none;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        /* Ajusta o tamanho da fonte e adiciona negrito ao botão "Entrar" */
+        .login-box .btn {
+            font-size: 1.15em; /* Mantém o tamanho da fonte */
+            font-weight: bold; /* Adiciona o negrito */
+            /* Se o botão 'Entrar' tiver cor, ela será herdada de style.css */
+        }
+        
+        /* CORREÇÃO FORÇADA: Remove o movimento do botão Entrar (submit) dentro da caixa de login */
+        .login-box .btn:hover {
+            transform: none !important; 
+            /* Esta é a regra mais específica e forte para anular o movimento */
+        }
+
+        /* NOVO: Estilo para o título Login */
+        .login-box h2 {
+            color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
+        }
+        
+        /* NOVO ESTILO: Mensagem de Login/Cadastro */
+        .login-message {
+            text-align: center;
+            margin-bottom: 30px; 
+            font-size: 1.1em;
+            color: rgba(0, 0, 0, 0.5); /* Cor preta com 50% de opacidade */
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+        
+        /* INÍCIO DO ESTILO DO RODAPÉ (PRETO SÓLIDO 100%) */
+        .footer {
+            background-color: black !important; /* Cor PRETA SÓLIDA (Forçado) */
+            color: white; /* Cor do texto no rodapé */
+            text-align: center; /* Centraliza o texto */
+            padding: 15px 0;
+            width: 100%;
+        }
+        /* FIM DO ESTILO DO RODAPÉ */
+
+        /* ESTILOS ADICIONADOS PARA O BOTÃO 'X' */
+        
+        /* 1. Torna a caixa de login um ponto de referência para o botão 'X' */
+        .login-box {
+            position: relative; 
+        }
+        
+        /* 2. Estilo do botão 'X' */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em; 
+            font-weight: bold;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+            line-height: 1;
+            padding: 5px;
+        }
+
+        /* 3. Efeito de hover em vermelho */
+        .close-btn:hover {
+            color: #dc3545; /* Cor vermelha ao passar o mouse */
+            text-decoration: none;
+            cursor: pointer;
+        }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">
+                <img src="Capivara.png" alt="Logotipo CAPIADVENTURE - Capivara mascote">
+      </div>
+      <div class="title">CAPIADVENTURE</div>
+    </div>
+
+    <nav class="nav-links" aria-label="Navegação">
+        <ul>
+            <li><a href="trilhas.php" class="top-link">Trilhas</a></li>
+            <li><a href="cadastro.html" class="top-link">Cadastrar</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    
+    <p class="login-message">
+        Entre ou cadastre-se para descobrir sua próxima aventura!
+    </p>
+    <section class="screen" id="tela_login" aria-labelledby="login-heading">
+      <div class="login-box">
+        <a href="index.html" class="close-btn" aria-label="Fechar e voltar para a página principal">×</a>
+        
+        <h2 id="login-heading">Login</h2> 
+
+        <div id="mensagem-alerta" class="mensagem" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 4px;"></div>
+        
+        <form action="processa_login.php" method="POST" autocomplete="off">
+          <label for="email" class="sr-only">Email:</label>
+          <input id="email" type="email" placeholder="Digite o seu email" name="email" autocomplete="username" required>
+          
+          <label for="senha" class="sr-only">Senha:</label>
+          <input id="senha" type="password" placeholder="Digite a sua senha" name="password" autocomplete="current-password" required>
+          
+          <div class="link-esqueci-senha">
+            <a href="Alterar_senha.html" class="link-pequeno">Esqueci minha senha</a>
+          </div>
+
+          <button type="submit" class="btn">Entrar</button>
+
+          <div class="links-secundarios">
+            <a href="cadastro.html" class="link-pequeno">Não tenho cadastro</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <p>2025 CAPIADVENTURE. Desenvolvido por Leandro Rocha & Gabriel Gonçalves.</p>
+  </footer>
+
+  <script>
+    // NOVO: Função para ler parâmetros da URL
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    window.onload = function() {
+        const mensagemDiv = document.getElementById('mensagem-alerta');
+        const erro = getUrlParameter('erro');
+        const cadastro = getUrlParameter('cadastro');
+        let mensagem = '';
+        let estilo = '';
+
+        if (erro) {
+            // Mensagem de Erro Padrão para Login
+            mensagem = 'Email ou senha incorretos. Tente novamente.';
+            estilo = 'background-color: #fdd; color: #a00; border: 1px solid #faa;';
+        } else if (cadastro === 'sucesso') {
+            // Mensagem de Sucesso de Cadastro
+            mensagem = 'Cadastro realizado com sucesso! Faça login para continuar.';
+            estilo = 'background-color: #ddf; color: #00a; border: 1px solid #aaf;';
+        } else if (getUrlParameter('acesso') === 'negado') {
+             // Mensagem para acesso negado (sem login)
+            mensagem = 'Acesso Negado. Por favor, faça login.';
+            estilo = 'background-color: #fdd; color: #a00; border: 1px solid #faa;';
+        }
+
+        if (mensagem) {
+            mensagemDiv.innerHTML = mensagem;
+            mensagemDiv.style.cssText = estilo + ' display: block;';
+        }
+    };
+  </script>
+</body>
+</html>

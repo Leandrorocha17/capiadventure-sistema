@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Página de cadastro para novos usuários CAPIADVENTURE."/>
+  <title>CAPIADVENTURE - Cadastro</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+        /* Configuração da Logo com Sombra Preta */
+        .brand .logo {
+            width: 80px; 
+            height: 80px; 
+            background-color: transparent;
+            /* Propriedades para arredondar o círculo e aplicar a sombra */
+            border-radius: 50%; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .brand .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+
+        /* ATUALIZADO: Ajusta o tamanho da fonte e adiciona negrito ao botão "Cadastrar" */
+        .login-box .btn {
+            font-size: 1.15em; 
+            font-weight: bold; 
+        }
+
+        /* 🔴 CORREÇÃO FORÇADA: Remove o movimento do botão Cadastrar (submit) */
+        .login-box .btn:hover {
+            transform: none !important;
+            transition: none !important; 
+        }
+        
+        /* 🔴 CORREÇÃO FORÇADA: Remove o movimento dos links superiores (Home, Entrar) */
+        .top-link:hover {
+            text-decoration: none;
+            transform: none !important;
+            transition: none !important;
+        }
+
+        /* 🟢 Estilo para placeholder em PRETO 50% para todos os inputs */
+        /* ATUALIZADO: Inclui o input[type="text"] para a data de nascimento */
+        input::placeholder,
+        input::-webkit-input-placeholder, /* Chrome/Safari/Opera */
+        input::-moz-placeholder, /* Firefox 19+ */
+        input:-ms-input-placeholder, /* IE 10+ */
+        input:-moz-placeholder { /* Firefox 18- */
+            color: rgba(0, 0, 0, 0.5) !important;
+            opacity: 1; /* Força a opacidade no Firefox */
+        }
+
+        /* 🟢 Estilo para o 'placeholder' nativo do input type="date" (dd/mm/aaaa) */
+        /* REMOVIDO: Este estilo não será mais necessário para a data, pois o input começa como type="text" */
+        /* input[type="date"]:not([value]):not(:focus) {
+            color: rgba(0, 0, 0, 0.5);
+        } */
+        /* Para navegadores WebKit (Chrome, Safari) */
+        /* input[type="date"]::-webkit-datetime-edit-year-field:empty, 
+        input[type="date"]::-webkit-datetime-edit-month-field:empty, 
+        input[type="date"]::-webkit-datetime-edit-day-field:empty {
+            color: rgba(0, 0, 0, 0.5) !important;
+        } */
+        
+        /* ESTILO: Título 'Cadastre-se' com 50% de opacidade */
+        .login-box h2 {
+            color: rgba(0, 0, 0, 0.5); /* Preto com 50% de opacidade */
+        }
+        
+        /* NOVO ESTILO: Mensagem de Login/Cadastro (e agora também a de Divulgação) */
+        .login-message {
+            text-align: center;
+            margin-bottom: 30px; 
+            font-size: 1.1em; /* Tamanho 1.1em */
+            color: rgba(0, 0, 0, 0.7); /* Cor preta com 70% de opacidade (AJUSTADO) */
+            line-height: 1.6;
+            padding: 0 15px;
+        }
+
+        /* NOVO: Remove o sublinhado do link "Voltar" (top-link) no hover */
+        .top-link:hover {
+            text-decoration: none;
+        }
+        
+        /* NOVO ESTILO: Roda-pé com a cor PRETA SÓLIDA (100%) */
+        .footer {
+            background-color: black !important; 
+            color: white; 
+            text-align: center; 
+            padding: 15px 0;
+            width: 100%;
+        }
+
+        /* INÍCIO: ESTILOS DE LINKS SECUNDÁRIOS */
+        .links-secundarios {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        
+        .link-pequeno {
+            display: inline-block;
+            padding: 8px 15px; 
+            border-radius: 5px;
+            text-decoration: none; 
+            font-size: 0.9em; 
+            font-weight: 500; 
+            background-color: rgba(0, 0, 0, 0.04); 
+            color: rgba(0, 0, 0, 0.7); 
+            border: none;
+        }
+
+        .link-pequeno:hover {
+            background-color: rgba(0, 0, 0, 0.1); 
+            text-decoration: none; 
+        }
+        /* FIM: ESTILOS DE LINKS SECUNDÁRIOS */
+        
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">
+        <img src="Capivara.png" alt="Logotipo CAPIADVENTURE - Capivara mascote">
+      </div>
+      <div class="title">CAPIADVENTURE</div>
+    </div>
+
+    <nav class="nav-links" aria-label="Navegação">
+        <ul>
+            <li><a href="trilhas.php" class="top-link">Trilhas</a></li>
+            <li><a href="login.html" class="top-link">Entrar</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    
+    <p class="login-message">
+        Cadastre-se e comece sua aventura hoje mesmo!
+    </p>
+
+    <p class="login-message" style="margin-top: -15px; margin-bottom: 20px;">
+        Se você é dono de uma trilha e deseja divulgá-la, preencha a opção “Quero divulgar trilhas também”. Assim, concederemos a você o acesso de administrador para gerenciar sua trilha e entraremos em contato para informar quando o acesso for liberado.
+    </p>
+    <section class="screen" id="tela_cadastro" aria-labelledby="cadastro-heading">
+      <div class="login-box">
+        <a href="index.php" class="close-btn" aria-label="Fechar e voltar para a página principal">×</a>
+        
+        <h2 id="cadastro-heading">Cadastre-se</h2> 
+
+        <div id="mensagem-alerta" class="mensagem" style="display: none; margin-bottom: 15px; padding: 10px; border-radius: 4px;"></div>
+
+        <form action="processa_cadastro.php" method="POST" autocomplete="off" onsubmit="return validarCadastro(event)">
+          
+          <label for="nome-completo" class="sr-only">Nome Completo:</label>
+          <input id="nome-completo" type="text" placeholder="Digite seu nome completo" name="nome" autocomplete="name" required>
+
+          <label for="email-cadastro" class="sr-only">Email:</label>
+          <input id="email-cadastro" type="email" placeholder="Digite um email" name="email" autocomplete="email" required>
+
+          <label for="nova-senha" class="sr-only">Crie uma senha:</label>
+          <input id="nova-senha" type="password" placeholder="Crie uma senha" name="password" autocomplete="new-password" required>
+          
+          <label for="cpf" class="sr-only">CPF:</label>
+          <input id="cpf" type="text" placeholder="Digite seu CPF" name="cpf" inputmode="numeric" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="CPF no formato 000.000.000-00" required>
+
+          <label for="nascimento" class="sr-only">Data de nascimento:</label>
+          <input id="nascimento" type="text" placeholder="Digite sua data de nascimento" name="nascimento" required>
+
+          <div class="checkbox-container">
+            <input type="checkbox" id="divulgar" name="divulgar">
+            <label for="divulgar">Quero divulgar trilhas também</label>
+          </div>
+
+          <button type="submit" class="btn">Cadastrar</button>
+          
+          <div class="links-secundarios" style="margin-top: 20px;">
+            <a href="login.html" class="link-pequeno">Já tem cadastro? Faça login.</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>2025 CAPIADVENTURE. Desenvolvido por Leandro Rocha & Gabriel Gonçalves.</p>
+  </footer>
+
+  <script src="scripts.js"></script> 
+  
+  <script>
+    // Função para ler parâmetros da URL
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // ATUALIZADO: Adiciona a função para alternar o tipo de input da data
+    function setupDateInput() {
+        const inputNascimento = document.getElementById('nascimento');
+        
+        // Altera para 'date' quando o usuário clica ou tabula no campo
+        inputNascimento.addEventListener('focus', function() {
+            if (this.type === 'text') {
+                this.type = 'date';
+                this.click(); // Abre o seletor de data em alguns navegadores
+            }
+        });
+
+        // Volta para 'text' se o campo estiver vazio ao perder o foco (exibindo o placeholder)
+        inputNascimento.addEventListener('blur', function() {
+            if (this.value === '') {
+                this.type = 'text';
+            }
+        });
+        
+        // Garantir que se a página for carregada com o valor preenchido (ex: cache do navegador), ele continue como 'date'
+        if (inputNascimento.value !== '') {
+             inputNascimento.type = 'date';
+        }
+    }
+
+    window.onload = function() {
+        const mensagemDiv = document.getElementById('mensagem-alerta');
+        const erro = getUrlParameter('erro');
+        let mensagem = '';
+        let estilo = '';
+
+        if (erro === 'existe') {
+            // Mensagem de Erro Específica (Email/CPF já cadastrado)
+            mensagem = 'Erro: Email ou CPF já cadastrados.';
+            estilo = 'background-color: #fdd; color: #a00; border: 1px solid #faa;';
+        } else if (erro === 'incompleto') {
+            // Mensagem para campos vazios
+            mensagem = 'Erro: Por favor, preencha todos os campos.';
+            estilo = 'background-color: #fdd; color: #a00; border: 1px solid #faa;';
+        } else if (erro === 'falha') {
+            // Mensagem para falha genérica no banco de dados
+            mensagem = 'Erro ao tentar realizar o cadastro. Tente novamente mais tarde.';
+            estilo = 'background-color: #fdd; color: #a00; border: 1px solid #faa;';
+        }
+        
+        if (mensagem) {
+            mensagemDiv.innerHTML = mensagem;
+            mensagemDiv.style.cssText = estilo + ' display: block;';
+        }
+        
+        // Também executa o código que aplica a formatação do CPF (que está no scripts.js)
+        if (typeof document.getElementById('cpf').dispatchEvent === 'function') {
+             document.getElementById('cpf').dispatchEvent(new Event('blur'));
+        }
+        
+        // ATUALIZADO: Chama a função para configurar o input de data
+        setupDateInput();
+    };
+  </script>
+</body>
+</html>
