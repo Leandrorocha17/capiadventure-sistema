@@ -115,7 +115,8 @@ try {
     .btn-ok { background-color: #6c757d; } /* Cinza para o botão OK */
     
     .historico-card {
-        border-left: 5px solid #ccc;
+        /* LINHA ABAIXO COMENTADA/REMOVIDA PARA TIRAR O DESTAQUE ESQUERDO */
+        /* border-left: 5px solid #ccc; */
         opacity: 0.8;
     }
 
@@ -160,7 +161,7 @@ try {
 
   <main class="main">
     <section class="screen" id="tela_gerenciar_agendamentos" aria-labelledby="gerenciamento-heading">
-      <h2 id="gerenciamento-heading" style="padding-top: 40px; margin-top: 20px; margin-bottom: 20px;">Gerenciar Agendamentos - Olá, <?php echo $nome_display; ?></h2> 
+      <h2 id="gerenciamento-heading" style="padding-top: 40px; margin-top: 20px; margin-bottom: 20px;">Gerenciar Agendamentos</h2> 
         
         <?php if ($mensagem_status): ?>
             <p style="padding: 10px; margin: 15px auto; border-radius: 4px; background-color: #ddf; color: #00a; border: 1px solid #aaf; max-width: 90%; width: 600px;">
@@ -233,3 +234,4 @@ try {
     </footer>
 </body>
 </html>
+
