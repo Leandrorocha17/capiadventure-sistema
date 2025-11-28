@@ -255,7 +255,7 @@ $is_admin = isset($_SESSION['admin']) && $_SESSION['admin'] === true;
   <header class="topbar">
     <div class="brand">
         <div class="logo">
-            <img src="Capivara.png" alt="Logotipo CAPIADVENTURE - Capivara mascote">
+            <img src="capivara.png" alt="Logotipo CAPIADVENTURE - Capivara mascote">
         </div>
         <div class="title">CAPIADVENTURE</div>
     </div>
@@ -359,4 +359,5 @@ $is_admin = isset($_SESSION['admin']) && $_SESSION['admin'] === true;
         // Não há mais lógica de carrossel nesta página.
     </script>
 </body>
+
 </html>
