@@ -80,14 +80,99 @@ try {
     
     <style>
         /* ---------------------------------- */
-        /* ESTILOS DE ORGANIZAÇÃO (NOVO) */
+        /* ESTILOS DA LOGO (COPIADO DE trilhas.php) */
+        /* ---------------------------------- */
+        .brand .logo {
+            width: 80px; 
+            height: 80px; 
+            background-color: transparent;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        }
+        .brand .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+        
+        /* ---------------------------------- */
+        /* ESTILOS GLOBAIS DE LINKS/BOTÕES */
+        /* ---------------------------------- */
+        /* Remove movimento e transição de TODOS os elementos com a classe .btn ao passar o mouse */
+        .btn:hover, .btn-acao:hover { 
+            text-decoration: none;
+            transform: none !important; 
+            transition: none !important;
+        }
+
+        /* Remove o sublinhado e movimento dos links da barra superior (.top-link) */
+        .top-link:hover {
+            text-decoration: none;
+            transform: none !important; 
+            transition: none !important; 
+        }
+
+        /* ---------------------------------- */
+        /* ESTILOS DO RODAPÉ */
+        /* ---------------------------------- */
+        .footer {
+            background-color: black; 
+            color: white; 
+            text-align: center; 
+            padding: 15px 0;
+            width: 100%;
+        }
+        
+        /* ---------------------------------- */
+        /* ESTILOS DE ORGANIZAÇÃO (CENTRALIZAÇÃO) */
         /* ---------------------------------- */
         .form-container {
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto; /* Centraliza o bloco do formulário na tela */
             padding: 20px;
+            padding-bottom: 80px; /* Adiciona espaço extra para o rodapé não cobrir o conteúdo */
         }
         
+        /* Centraliza os botões de submissão no formulário (ATUALIZADO) */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Espaçamento entre os botões */
+            margin-top: 25px;
+        }
+        
+        /* Estilos dos botões de Ação (Para garantir tamanho igual) */
+        .btn-acao {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none; /* Remove sublinhado */
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s;
+            min-width: 150px; /* Garante tamanho mínimo e igual para os botões */
+            display: inline-block; /* Necessário para links/botões no flex container */
+        }
+
+        .btn-editar {
+            background-color: #ffc107; /* Amarelo para Cancelar */
+            color: #212529;
+        }
+        .btn-editar:hover {
+            background-color: #e0a800;
+        }
+        
+        /* Estilo para o botão Salvar */
+        .btn-salvar {
+            background-color: #34B5CC; /* Cor de Salvar Padrão (azul) */
+            color: white;
+        }
+        .btn-salvar:hover {
+            background-color: #2C9CAD;
+        }
+
+
         /* Corrigindo a cor do título principal para admins */
         h2 {
             color: rgba(0, 0, 0, 0.5) !important;
@@ -308,7 +393,7 @@ try {
                     <p class="status-alerta erro">Erro ao salvar alterações. Verifique os dados ou logs.</p>
                 <?php endif; ?>
 
-                <form action="processa_edicao_trilha.php" method="POST" enctype="multipart/form-data">
+                <form action="processa_editar_trilha.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="id_trilha" value="<?php echo $trilha['id_trilha']; ?>">
                     
                     <label for="nome">Nome:</label>
@@ -393,7 +478,10 @@ try {
                     <label for="imagens" class="label-top-margin">Adicionar Novas Fotos (Opcional, Máx. 10):</label>
                     <input id="imagens" type="file" name="imagens[]" accept="image/jpeg, image/png" multiple onchange="validarFotos(this)">
                     
-                    <button type="submit" class="btn">Salvar Alterações</button>
+                    <div class="button-group">
+                        <button type="submit" class="btn-acao btn-salvar">Salvar</button>
+                        <a href="gerenciar_trilhas.php" class="btn-acao btn-editar">Cancelar</a>
+                    </div>
                 </form>
             </div>
         </section>
