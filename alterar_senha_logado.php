@@ -111,6 +111,9 @@ $nome_display = htmlspecialchars(explode(' ', $_SESSION['nome_usuario'])[0]);
             text-decoration: none;
             cursor: pointer;
         }
+        
+        /* A estilização específica para o botão 'Voltar' foi removida,
+           para que ele herde o estilo padrão do .top-link. */
   </style>
 
   <?php if ($sucesso_alteracao): ?>
@@ -127,11 +130,9 @@ $nome_display = htmlspecialchars(explode(' ', $_SESSION['nome_usuario'])[0]);
       <div class="title">CAPIADVENTURE</div>
     </div>
     
-    <nav class="nav-links" aria-label="Navegação">
+    <nav class="nav-links" aria-label="Navegação de Retorno">
         <ul>
-            <li><a href="meus_agendamentos.php" class="top-link">Meus agendamentos</a></li>
-            <li><a href="trilhas.php" class="top-link">Trilhas</a></li>
-            <li><a href="logout.php" class="top-link">Sair</a></li>
+            <li><a href="javascript:history.back()" class="top-link" title="Voltar para a página anterior">Voltar</a></li>
         </ul>
     </nav>
   </header>
